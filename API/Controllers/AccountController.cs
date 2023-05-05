@@ -6,7 +6,6 @@ using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace API.Controllers
 {
@@ -50,7 +49,7 @@ namespace API.Controllers
             var user = await _context.Users.SingleOrDefaultAsync(x =>
                 x.UserName == loginDto.UserName);
 
-            if (User == null) return Unauthorized("invlaid username");
+            if (user == null) return Unauthorized("invalid username");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
 

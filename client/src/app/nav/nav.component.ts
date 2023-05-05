@@ -10,9 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit{
+export class NavComponent implements OnInit {
   model: any = {};
-
   constructor(public accountService: AccountService, private router: Router, 
     private toastr: ToastrService) { }
 
@@ -21,8 +20,7 @@ export class NavComponent implements OnInit{
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: _ => this.router.navigateByUrl('/members'),
-      error: error => this.toastr.error(error.error)
+      next: _ => this.router.navigateByUrl('/members')
     })
   }
 
